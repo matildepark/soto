@@ -1,7 +1,7 @@
 {
-  "name": "create-landscape-app",
-  "version": "0.2.2",
-  "description": "Get started with a Landscape application.",
+  "name": "soto",
+  "version": "0.0.1",
+  "description": "Dojo relay for Urbit.",
   "main": "node install.js",
   "scripts": {
     "start": "node install.js",
@@ -10,7 +10,7 @@
   },
   "author": "Tlon Corp",
   "license": "MIT",
-  "repository": "https://github.com/urbit/create-landscape-app",
+  "repository": "https://github.com/matildepark/soto",
   "devDependencies": {
     "@sucrase/gulp-plugin": "^2.0.0",
     "cssnano": "^4.1.10",

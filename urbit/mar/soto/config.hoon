@@ -3,15 +3,15 @@
 /?  309
 ::
 /-  hall
-/+  %APPNAME%, hall-json
+/+  soto, hall-json
 ::
-|_  str=streams:%APPNAME%
+|_  str=streams:soto
 ++  grow
   |%
   ++  json
     =,  enjs:format
     ^-  ^json
-    %+  frond  %%APPNAME%
+    %+  frond  %soto
     %-  pairs
     :~  
       ::
@@ -43,6 +43,6 @@
 ::
 ++  grab
   |%
-  ++  noun  streams:%APPNAME%
+  ++  noun  streams:soto
   --
 --

@@ -34,8 +34,8 @@ class UrbitApi {
     this.action("hall", "hall-action", data);
   }
 
-  %APPNAME%(data) {
-    this.action("%APPNAME%", "json", data);
+  soto(data) {
+    this.action("soto", "json", data);
   }
 
   action(appl, mark, data) {

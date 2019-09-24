@@ -80,6 +80,12 @@
   ^-  (quip move _this)
   [~ this] 
 ::
+++  poke-json
+  |=  jon=json
+  ^-  (quip move _this)
+  ~&  "got it sarge"
+  [~ this]
+::
 ::  +send-soto-update: utility func for sending updates to all our subscribers
 ::
 ++  send-soto-update

@@ -1,13 +1,24 @@
-import React, { Component } from 'react';
-import { BrowserRouter, Route } from "react-router-dom";
-import classnames from 'classnames';
-import _ from 'lodash';
+import React, { Component } from 'react'
+import { BrowserRouter, Route } from "react-router-dom"
+import classnames from 'classnames'
+import _ from 'lodash'
 import { HeaderBar } from "./lib/header-bar.js"
+import { api } from '../api'
 
 
 export class Root extends Component {
   constructor(props) {
     super(props);
+    let ship = window.ship;
+  }
+
+  componentDidMount() {
+    let body = document.getElementsByTagName('body')[0]
+    body.classList.add("bg-black")
+  }
+
+  sotoAction() {
+    api.soto("hi")
   }
 
   render() {
@@ -18,11 +29,9 @@ export class Root extends Component {
         <HeaderBar/>
         <Route exact path="/~soto" render={ () => {
           return (
-            <div className="pa3 w-100">
-              <h1 className="mt0 f2">soto</h1>
-              <p className="lh-copy measure pt3">Welcome to your Landscape application.</p>
-              <p className="lh-copy measure pt3">To get started, edit <code>src/index.js</code> or <code>soto.hoon</code> and <code>|commit %home</code> on your Urbit ship to see your changes.</p>
-              <a className="black no-underline db body-large pt3" href="https://urbit.org/docs">-> Read the docs</a>
+            <div className="pa3 flex bg-black mono gray2 w-100"
+            style={{lineHeight: "1.4"}}>~{ship}:dojo>
+              <input autoCorrect="false" autoFocus={true} className="mono ml1 flex-auto dib w-100"></input>
             </div>
           )}}
         />

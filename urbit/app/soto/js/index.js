@@ -44548,35 +44548,6 @@
               }
             }
 
-            const _jsxFileName$3 = "/Users/matilde/git/tlon/soto/src/js/components/root.js";
-
-            class Root extends react_1 {
-              constructor(props) {
-                super(props);
-              }
-
-              render() {
-
-                return (
-                  react.createElement(BrowserRouter, {__self: this, __source: {fileName: _jsxFileName$3, lineNumber: 16}}
-                    , react.createElement('div', {__self: this, __source: {fileName: _jsxFileName$3, lineNumber: 17}}
-                    , react.createElement(HeaderBar, {__self: this, __source: {fileName: _jsxFileName$3, lineNumber: 18}})
-                    , react.createElement(Route, { exact: true, path: "/~soto", render:  () => {
-                      return (
-                        react.createElement('div', { className: "pa3 w-100" , __self: this, __source: {fileName: _jsxFileName$3, lineNumber: 21}}
-                          , react.createElement('h1', { className: "mt0 f2" , __self: this, __source: {fileName: _jsxFileName$3, lineNumber: 22}}, "soto")
-                          , react.createElement('p', { className: "lh-copy measure pt3"  , __self: this, __source: {fileName: _jsxFileName$3, lineNumber: 23}}, "Welcome to your Landscape application."    )
-                          , react.createElement('p', { className: "lh-copy measure pt3"  , __self: this, __source: {fileName: _jsxFileName$3, lineNumber: 24}}, "To get started, edit "    , react.createElement('code', {__self: this, __source: {fileName: _jsxFileName$3, lineNumber: 24}}, "src/index.js"), " or "  , react.createElement('code', {__self: this, __source: {fileName: _jsxFileName$3, lineNumber: 24}}, "soto.hoon"), " and "  , react.createElement('code', {__self: this, __source: {fileName: _jsxFileName$3, lineNumber: 24}}, "|commit %home" ), " on your Urbit ship to see your changes."        )
-                          , react.createElement('a', { className: "black no-underline db body-large pt3"    , href: "https://urbit.org/docs", __self: this, __source: {fileName: _jsxFileName$3, lineNumber: 25}}, "-> Read the docs"   )
-                        )
-                      )}, __self: this, __source: {fileName: _jsxFileName$3, lineNumber: 19}}
-                    )
-                    )
-                  )
-                )
-              }
-            }
-
             class UrbitApi {
               setAuthTokens(authTokens) {
                 this.authTokens = authTokens;
@@ -44627,6 +44598,43 @@
             }
             let api = new UrbitApi();
             window.api = api;
+
+            const _jsxFileName$3 = "/Users/matilde/git/tlon/soto/src/js/components/root.js";
+
+            class Root extends react_1 {
+              constructor(props) {
+                super(props);
+                let ship = window.ship;
+              }
+
+              componentDidMount() {
+                let body = document.getElementsByTagName('body')[0];
+                body.classList.add("bg-black");
+              }
+
+              sotoAction() {
+                api.soto("hi");
+              }
+
+              render() {
+
+                return (
+                  react.createElement(BrowserRouter, {__self: this, __source: {fileName: _jsxFileName$3, lineNumber: 27}}
+                    , react.createElement('div', {__self: this, __source: {fileName: _jsxFileName$3, lineNumber: 28}}
+                    , react.createElement(HeaderBar, {__self: this, __source: {fileName: _jsxFileName$3, lineNumber: 29}})
+                    , react.createElement(Route, { exact: true, path: "/~soto", render:  () => {
+                      return (
+                        react.createElement('div', { className: "pa3 flex bg-black mono gray2 w-100"     ,
+                        style: {lineHeight: "1.4"}, __self: this, __source: {fileName: _jsxFileName$3, lineNumber: 32}}, "~", ship, ":dojo>"
+                          , react.createElement('input', { autoCorrect: "false", autoFocus: true, className: "mono ml1 flex-auto dib w-100"    , __self: this, __source: {fileName: _jsxFileName$3, lineNumber: 34}})
+                        )
+                      )}, __self: this, __source: {fileName: _jsxFileName$3, lineNumber: 30}}
+                    )
+                    )
+                  )
+                )
+              }
+            }
 
             class InitialReducer {
                 reduce(json, state) {

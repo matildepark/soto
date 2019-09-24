@@ -19224,10 +19224,13 @@
 
               render() {
                 return (
-                  react.createElement('div', { className: "w-100 h-100 relative"  , style: { background: '#1a1a1a' }, __self: this, __source: {fileName: _jsxFileName, lineNumber: 10}}
-                    , react.createElement('a', { className: "w-100 h-100 db pa2 no-underline"    , href: "/~soto", __self: this, __source: {fileName: _jsxFileName, lineNumber: 11}}
-                      , react.createElement('p', { className: "gray label-regular b absolute"   , style: { left: 8, top: 4 }, __self: this, __source: {fileName: _jsxFileName, lineNumber: 12}}, "soto")
-                      , react.createElement('p', { className: "white absolute" , style: { top: 25, left: 8 }, __self: this, __source: {fileName: _jsxFileName, lineNumber: 13}}, "This is sample text for your full app tile."        )
+                  react.createElement('div', { className: "w-100 h-100 relative bg-black ba b--gray"     , style: { }, __self: this, __source: {fileName: _jsxFileName, lineNumber: 10}}
+                    , react.createElement('a', { className: "pa2 no-underline b label-regular absolute"    , href: "/~soto",
+                    style: { right: 8, top: 4, color: "#777", padding: 0 }, __self: this, __source: {fileName: _jsxFileName, lineNumber: 11}}, "Dojo ->" )
+                    , react.createElement('section', { class: "eval mono gray flex pt4 pl1 pr1"      ,
+                    style: {fontFamily: `"Source Code Pro", monospace`, lineHeight: "1.4"}, __self: this, __source: {fileName: _jsxFileName, lineNumber: 13}}, "~", window.ship, ":eval>"
+                    , react.createElement('input', { autoFocus: true, class: "dib flex-auto bg-black gray bn ml1"     ,
+                    style: {fontFamily: `"Source Code Pro", monospace`}, __self: this, __source: {fileName: _jsxFileName, lineNumber: 15}})
                     )
                   )
                 );

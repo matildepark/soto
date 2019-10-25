@@ -20,7 +20,7 @@ export class Subscription {
   }
 
   handleEvent(diff) {
-    store.handleEvent(diff);
+    console.log(diff.data);
   }
 
   handleError(err) {

@@ -44600,30 +44600,40 @@
               constructor(props) {
                 super(props);
                 let ship = window.ship;
+                this.handleChange = this.handleChange.bind(this);
+                this.keyPress = this.keyPress.bind(this);
+                this.state = {value: ''};
               }
+
+              handleChange(e) {
+                this.setState({ value: e.target.value });
+             }
+
 
               componentDidMount() {
                 let body = document.getElementsByTagName('body')[0];
                 body.classList.add("bg-black");
               }
 
-              sotoAction() {
-                api.soto("hi");
+              keyPress(e) {
+                if (e.keyCode === 13) {
+                  console.log("keysent");
+                  api.soto("ret");
+                }
               }
 
               render() {
-
                 return (
-                  react.createElement(BrowserRouter, {__self: this, __source: {fileName: _jsxFileName$3, lineNumber: 27}}
-                    , react.createElement('div', {__self: this, __source: {fileName: _jsxFileName$3, lineNumber: 28}}
-                    , react.createElement(HeaderBar, {__self: this, __source: {fileName: _jsxFileName$3, lineNumber: 29}})
+                  react.createElement(BrowserRouter, {__self: this, __source: {fileName: _jsxFileName$3, lineNumber: 37}}
+                    , react.createElement('div', {__self: this, __source: {fileName: _jsxFileName$3, lineNumber: 38}}
+                    , react.createElement(HeaderBar, {__self: this, __source: {fileName: _jsxFileName$3, lineNumber: 39}})
                     , react.createElement(Route, { exact: true, path: "/~soto", render:  () => {
                       return (
                         react.createElement('div', { className: "pa3 flex bg-black mono gray2 w-100"     ,
-                        style: {lineHeight: "1.4"}, __self: this, __source: {fileName: _jsxFileName$3, lineNumber: 32}}, "~", ship, ":dojo>"
-                          , react.createElement('input', { autoCorrect: "false", autoFocus: true, className: "mono ml1 flex-auto dib w-100"    , __self: this, __source: {fileName: _jsxFileName$3, lineNumber: 34}})
+                        style: {lineHeight: "1.4"}, __self: this, __source: {fileName: _jsxFileName$3, lineNumber: 42}}, "~", ship, ":dojo"
+                          , react.createElement('input', { autoCorrect: "false", autoFocus: true, className: "mono ml1 flex-auto dib w-100"    , onKeyDown: this.keyPress, __self: this, __source: {fileName: _jsxFileName$3, lineNumber: 44}})
                         )
-                      )}, __self: this, __source: {fileName: _jsxFileName$3, lineNumber: 30}}
+                      )}, __self: this, __source: {fileName: _jsxFileName$3, lineNumber: 40}}
                     )
                     )
                   )
@@ -44636,10 +44646,6 @@
                     let data = lodash.get(json, 'initial', false);
                     if (data) {
                         state.messages = data.messages;
-                        state.inbox = data.inbox;
-                        state.configs = data.configs;
-                        state.circles = data.circles;
-                        state.peers = data.peers;
                     }
                 }
             }
@@ -50884,7 +50890,7 @@ lyrtesmudnytbyrsenwegfyrmurtelreptegpecnelnevfes\
               }
 
               handleEvent(diff) {
-                store.handleEvent(diff);
+                console.log(diff.data);
               }
 
               handleError(err) {

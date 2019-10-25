@@ -1,5 +1,4 @@
-/-  hall
-/+  *server, soto, hall-json
+/+  *server
 /=  index
   /^  octs
   /;  as-octs:mimes:html
@@ -83,7 +82,6 @@
 ++  poke-json
   |=  jon=json
   ^-  (quip move _this)
-  ~&  "got it sarge"
   [~ this]
 ::
 ::  +send-soto-update: utility func for sending updates to all our subscribers

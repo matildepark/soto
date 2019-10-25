@@ -27,14 +27,29 @@
   /|  /css/
       /~  ~
   ==
-:: This iterates over item in the img directory, takes their filenames
-:: at @tas (knots), takes the file as @ (binary) and runs it through the 
-:: png mark.
-/=  soto-png
-  /^  (map knot @)
-  /:  /===/app/soto/img  /_  /png/
+=,  format
+:: This core defines the moves the application makes, as well as their types.
+|%
+:: +move: output effect
++$  state
+  $%  [%0 *]
+  ==
 ::
-=,  soto
++$  move  (pair bone card)
+::
++$  poke
+  $%  [%launch-action [@tas path @t]]
+  ==
+:: +card: output move payload
+::
++$  card
+  $%  [%poke wire dock poke]
+      [%http-response =http-event:http]
+      [%connect wire binding:eyre term]
+      [%diff %json json]
+  ==
+::
+--
 ::
 |_  [bol=bowl:gall sta=state]
 ::
@@ -42,7 +57,7 @@
 ::
 ::  +prep: set up the app, migrate the state once started
 ::
-++  prep
+++  prep  
   |=  old=(unit state)
   ^-  (quip move _this)
   =/  launcha/poke
@@ -72,37 +87,11 @@
   ^-  (quip move _this)
   [~ this]
 ::
-::  +poke-soto: send us an action
-::
-++  poke-soto-action
-  |=  act=action:soto
-  ^-  (quip move _this)
-  [~ this] 
-::
 ++  poke-json
   |=  jon=json
   ^-  (quip move _this)
   [~ this]
 ::
-::  +send-soto-update: utility func for sending updates to all our subscribers
-::
-++  send-soto-update
-  |=  [upd=update str=streams]
-  ^-  (list move)
-  =/  updates/(list move)
-    %+  turn  (prey:pubsub:userlib /primary bol)
-    |=  [=bone *]
-    [bone %diff %soto-update upd]
-  ::
-  =/  tile-updates/(list move)
-    %+  turn  (prey:pubsub:userlib /sototile bol)
-    |=  [=bone *]
-    [bone %diff %json *json]
-  ::
-  %+  weld
-    updates
-    tile-updates
-
 ::
 ::  +lient arms
 ::
@@ -144,13 +133,6 @@
       [%'~soto' %js %index ~]
     :_  this
     [ost.bol %http-response (js-response:app script)]~
-  ::
-  ::  images
-  ::
-      [%'~soto' %img *]
-    =/  img  (as-octs:mimes:html (~(got by soto-png) `@ta`name))
-    :_  this
-    [ost.bol %http-response (png-response:app img)]~
   ::
   ::  inbox page
   ::

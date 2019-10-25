@@ -50878,7 +50878,7 @@ lyrtesmudnytbyrsenwegfyrmurtelreptegpecnelnevfes\
               }
 
               initializesoto() {
-                api.bind('/sole', 'PUT', api.authTokens.ship, 'soto',
+                api.bind('/sole', 'PUT', api.authTokens.ship, 'dojo',
                   this.handleEvent.bind(this),
                   this.handleError.bind(this));
               }
@@ -50889,7 +50889,7 @@ lyrtesmudnytbyrsenwegfyrmurtelreptegpecnelnevfes\
 
               handleError(err) {
                 console.error(err);
-                api.bind('/sole', 'PUT', api.authTokens.ship, 'soto',
+                api.bind('/sole', 'PUT', api.authTokens.ship, 'dojo',
                   this.handleEvent.bind(this),
                   this.handleError.bind(this));
               }
@@ -50905,7 +50905,7 @@ lyrtesmudnytbyrsenwegfyrmurtelreptegpecnelnevfes\
             subscription.start();
 
             reactDom.render((
-              react.createElement(Root, {__self: undefined, __source: {fileName: _jsxFileName$4, lineNumber: 15}} )
+              react.createElement(Root, {__self: undefined, __source: {fileName: _jsxFileName$4, lineNumber: 14}} )
             ), document.querySelectorAll("#root")[0]);
 
 }));

@@ -1,4 +1,5 @@
-/+  *server
+/-  sole
+/+  *server, *sole
 /=  index
   /^  octs
   /;  as-octs:mimes:html
@@ -81,6 +82,12 @@
 ++  poke-json
   |=  jon=json
   ^-  (quip move _this)
+  [~ this]
+::
+++  poke-sole-action
+  |=  sole-action
+  ^-  (quip move _this)
+  ~&  'yeah'
   [~ this]
 ::
 ++  bound

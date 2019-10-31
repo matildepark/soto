@@ -1,3 +1,6 @@
 node_modules
 .urbitrc
+# built files
 dist
+urbit/app/soto/js
+urbit/app/soto/css

@@ -83,8 +83,8 @@
 ++  peer-primary
   |=  wir=wire
   ^-  (quip move _this)
-  ~&  'bound'
-  [~ this]
+  :_  this
+  [ost.bol %peer / [our.bol %dojo] /sole]~
 ::
 ++  poke-sole-action
   |=  sole-action
@@ -92,10 +92,13 @@
   ~&  'yeah'
   [~ this]
 ::
+::
 ++  diff-sole-effect
   |=  [=wire fec=sole-effect]
-  ~&  [%sole fec]
-  [~ this]
+  ^-  (quip move _this)
+  ~&  fec
+  :_  this
+  [ost.bol %diff %sole-effect fec]~
 ::
 ++  bound
   |=  [wir=wire success=? binding=binding:eyre]

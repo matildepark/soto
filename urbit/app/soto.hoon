@@ -34,17 +34,24 @@
   $%  [%0 @]
   ==
 ::
-+$  move  (pair bone card)
++$  move  [bone card]
 ::
 +$  poke
   $%  [%launch-action [@tas path @t]]
+      [%sole-action sole-action:sole]
   ==
 ::
 +$  card
   $%  [%poke wire dock poke]
+      [%peer wire dock path]
       [%http-response =http-event:http]
       [%connect wire binding:eyre term]
-      [%diff %json json]
+      [%diff diff]
+  ==
+::
++$  diff
+  $%  [%json json]
+      [%sole-effect sole-effect:sole]
   ==
 ::
 --
@@ -61,7 +68,6 @@
   ?~  old
     :_  this
     :~ 
-        :: %connect here tells %eyre to mount at the /~soto endpoint.
         [ost.bol %connect / [~ /'~soto'] %soto]
         [ost.bol %poke /soto [our.bol %launch] launcha]
     ==
@@ -77,17 +83,18 @@
 ++  peer-primary
   |=  wir=wire
   ^-  (quip move _this)
-  [~ this]
-::
-++  poke-json
-  |=  jon=json
-  ^-  (quip move _this)
+  ~&  'bound'
   [~ this]
 ::
 ++  poke-sole-action
   |=  sole-action
   ^-  (quip move _this)
   ~&  'yeah'
+  [~ this]
+::
+++  diff-sole-effect
+  |=  [=wire fec=sole-effect]
+  ~&  [%sole fec]
   [~ this]
 ::
 ++  bound

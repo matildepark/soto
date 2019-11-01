@@ -14,7 +14,7 @@ export class Subscription {
   }
 
   initializesoto() {
-    api.bind('/sole', 'PUT', api.authTokens.ship, 'soto',
+    api.bind('/primary', 'PUT', api.authTokens.ship, 'soto',
       this.handleEvent.bind(this),
       this.handleError.bind(this));
   }
@@ -25,7 +25,7 @@ export class Subscription {
 
   handleError(err) {
     console.error(err);
-    api.bind('/sole', 'PUT', api.authTokens.ship, 'soto',
+    api.bind('/primary', 'PUT', api.authTokens.ship, 'soto',
       this.handleEvent.bind(this),
       this.handleError.bind(this));
   }

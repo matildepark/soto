@@ -81,16 +81,27 @@
   [ost.bol %diff %json *json]~
 ::
 ++  peer-primary
-  |=  wir=wire
+  |=  [wir=wire bon=state]
   ^-  (quip move _this)
-  :_  this
-  [ost.bol %peer / [our.bol %dojo] /sole]~
+  :-  [ost.bol %peer / [our.bol %dojo] /sole]~
+  %=  this
+    bon  ost.bol
+  ==
+::
 ::
 ++  poke-sole-action
-  |=  sole-action
+  |=  [act=sole-action bon=state]
   ^-  (quip move _this)
-  ~&  'yeah'
-  [~ this]
+  ~&  act
+  :: this wutsig is fucked, needs help
+  ?~  bon
+    ost.bol
+  %=  this
+    bon  ost.bol
+  ==
+  ~&  bon
+  :_  this
+  [bon %poke /sole [our.bol %dojo] [%sole-action act]]~
 ::
 ::
 ++  diff-sole-effect

@@ -31,7 +31,7 @@
 =,  format
 |%
 +$  state
-  $%  [%0 @]
+  $%  [%0 bon=(unit bone)]
   ==
 ::
 +$  move  [bone card]
@@ -61,9 +61,9 @@
 ++  this  .
 ::
 ++  prep
-  |=  old=(unit state)
+  |=  old=(unit sta)
   ^-  (quip move _this)
-  =/  launcha/poke
+  =/  launcha=poke
     [%launch-action [%soto /sototile '/~soto/js/tile.js']]
   ?~  old
     :_  this
@@ -81,28 +81,19 @@
   [ost.bol %diff %json *json]~
 ::
 ++  peer-primary
-  |=  [wir=wire bon=state]
+  |=  wir=wire
   ^-  (quip move _this)
   :-  [ost.bol %peer / [our.bol %dojo] /sole]~
   %=  this
-    bon  ost.bol
+    bon.sta  ost.bol
   ==
-::
 ::
 ++  poke-sole-action
-  |=  [act=sole-action bon=state]
+  |=  act=sole-action
   ^-  (quip move _this)
   ~&  act
-  :: this wutsig is fucked, needs help
-  ?~  bon
-    ost.bol
-  %=  this
-    bon  ost.bol
-  ==
-  ~&  bon
-  :_  this
-  [bon %poke /sole [our.bol %dojo] [%sole-action act]]~
-::
+  :_  this(bon.sta `(fall bon.sta ost.bol))
+  [bon.sta %poke /sole [our.bol %dojo] [%sole-action act]]~
 ::
 ++  diff-sole-effect
   |=  [=wire fec=sole-effect]

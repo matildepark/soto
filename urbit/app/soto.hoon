@@ -94,14 +94,14 @@
   ^-  (quip move _this)
   ~&  act
   :_  this
-  [bon.sta %poke /sole [our.bol %dojo] [%sole-action act]]~
+  [bon.sta %poke / [our.bol %dojo] [%sole-action act]]~
 ::
 ++  diff-sole-effect
   |=  [=wire fec=sole-effect]
   ^-  (quip move _this)
   ~&  fec
   :_  this
-  [ost.bol %diff %sole-effect fec]~
+  [bon.sta %diff %sole-effect fec]~
 ::
 ++  bound
   |=  [wir=wire success=? binding=binding:eyre]

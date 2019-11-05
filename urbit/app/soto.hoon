@@ -31,7 +31,7 @@
 =,  format
 |%
 +$  state
-  $%  [%0 bon=(unit bone)]
+  $%  [%0 bon=bone]
   ==
 ::
 +$  move  [bone card]
@@ -61,8 +61,9 @@
 ++  this  .
 ::
 ++  prep
-  |=  old=(unit sta)
+  |=  old=(unit state)
   ^-  (quip move _this)
+  ~&  '%prep'
   =/  launcha=poke
     [%launch-action [%soto /sototile '/~soto/js/tile.js']]
   ?~  old
@@ -92,7 +93,7 @@
   |=  act=sole-action
   ^-  (quip move _this)
   ~&  act
-  :_  this(bon.sta `(fall bon.sta ost.bol))
+  :_  this
   [bon.sta %poke /sole [our.bol %dojo] [%sole-action act]]~
 ::
 ++  diff-sole-effect

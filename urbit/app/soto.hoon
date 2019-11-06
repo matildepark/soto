@@ -84,7 +84,7 @@
 ++  peer-primary
   |=  wir=wire
   ^-  (quip move _this)
-  :-  [ost.bol %peer / [our.bol %dojo] /sole]~
+  :-  [ost.bol %peer / [our.bol %dojo] /sole]~                                 :: poke/peer need same wire
   %=  this
     bon.sta  ost.bol
   ==
@@ -94,7 +94,7 @@
   ^-  (quip move _this)
   ~&  act
   :_  this
-  [bon.sta %poke / [our.bol %dojo] [%sole-action act]]~
+  [bon.sta %poke / [our.bol %dojo] [%sole-action act]]~                        :: poke/peer need same wire
 ::
 ++  diff-sole-effect
   |=  [=wire fec=sole-effect]

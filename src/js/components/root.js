@@ -35,13 +35,15 @@ export class Root extends Component {
   render() {
     return (
       <BrowserRouter>
-        <div>
+        <div style={{height: "100vh", cursor: "text"}}>
         <HeaderBar/>
         <Route exact path="/~soto" render={ () => {
           return (
-            <div className="pa3 flex bg-black mono gray2 w-100"
-            style={{lineHeight: "1.4"}}>~{ship}:dojo
+            <div className="pa3 flex flex-column-reverse bg-black mono gray3 w-100"
+            style={{lineHeight: "1.4", height: "calc(100% - 48px)"}}>
+              <div className="flex flex-row">~{ship}:dojo
               <input autoCorrect="false" autoFocus={true} className="mono ml1 flex-auto dib w-100" onKeyDown={this.keyPress}></input>
+              </div>
             </div>
           )}}
         />

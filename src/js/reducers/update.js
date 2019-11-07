@@ -1,5 +1,6 @@
 import _ from 'lodash';
 
+// handlers for diffs
 
 export class UpdateReducer {
     reduce(json, state) {

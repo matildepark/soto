@@ -15,7 +15,7 @@ export class Input extends Component {
 
     render() {
         return (
-            <div className="flex flex-row">~{this.props.ship}:dojo<span id="prompt"></span>
+            <div className="flex flex-row">~{this.props.ship}:dojo<span id="prompt">{this.props.prompt}</span>
               <input autoCorrect="false" autoFocus={true} className="mono ml1 flex-auto dib w-100" onKeyDown={this.keyPress}></input>                
             </div>
         )

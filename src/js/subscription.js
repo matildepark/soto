@@ -1,8 +1,6 @@
 import { api } from '/api';
 import { store } from '/store';
 
-import urbitOb from 'urbit-ob';
-
 
 export class Subscription {
   start() {
@@ -20,8 +18,8 @@ export class Subscription {
   }
 
   handleEvent(diff) {
-    console.log(diff.data);
-  }
+      console.log(diff.data)
+}
 
   handleError(err) {
     console.error(err);

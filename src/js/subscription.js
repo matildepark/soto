@@ -1,5 +1,5 @@
-import { api } from '/api';
-import { store } from '/store';
+import { api } from './api';
+import { store } from './store'
 
 
 export class Subscription {
@@ -18,7 +18,7 @@ export class Subscription {
   }
 
   handleEvent(diff) {
-      console.log(diff.data)
+    store.handleEvent(diff)
 }
 
   handleError(err) {

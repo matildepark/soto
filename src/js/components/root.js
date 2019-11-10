@@ -6,17 +6,23 @@ import { HeaderBar } from './lib/header-bar'
 import { History } from './history'
 import { Input } from './input'
 import { api } from '../api'
-
+import { store } from '../store'
+import { Share } from './lib/sole'
 
 export class Root extends Component {
   constructor(props) {
     super(props);
+    this.state = store.state;
+    store.setStateHandler(this.setState.bind(this));
     let ship = window.ship;
+    const buffer = new Share;
+    console.log(buffer);
+    // this.state = store.state
   }
 
 
   componentDidMount() {
-  //
+//
   }
 
   render() {
@@ -29,7 +35,7 @@ export class Root extends Component {
             <div className="pa3 flex flex-column-reverse bg-black mono gray3 w-100"
             style={{lineHeight: "1.4", height: "calc(100% - 48px)", cursor: "text"}}>
               <History/>
-              <Input ship={ship}/>
+              <Input ship={ship} prompt={this.state.prompt}/>
             </div>
           )}}
         />

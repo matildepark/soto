@@ -3,7 +3,7 @@ const str = JSON.stringify;
 
 // initiates, holds and modifies buffer for communication
 
-module.exports = class exports {
+export class Share {
   constructor(buf, ven, leg) {
     if (buf == null) { buf = ""; }
     this.buf = buf;
@@ -110,3 +110,5 @@ module.exports = class exports {
     return ((left = (this.transmute(ted, {ins: {at: pos}})).ins) != null ? left : {at:0}).at; }
   }
 };
+
+export default Share

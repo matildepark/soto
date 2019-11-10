@@ -7,10 +7,18 @@ export class Store {
     }
 
     handleEvent(data) {
-        let json = data.data;
-        console.log(json);
-        if (json.pro) this.setState({prompt: json.pro.cad})
-        let textLog = this.state;
+        let dojoReply = data.data;
+        console.log(dojoReply);
+        // pro is our prompt, either > or < depending on the statement
+        if (dojoReply.pro) this.setState({ prompt: dojoReply.pro.cad});
+        // responses come in "reply + change to buffer" arrays
+        if (dojoReply.constructor === Array) {
+            if (dojoReply[0].txt) {
+                let textLog = this.state.txt;
+                textLog.push(dojoReply[0].txt);
+                this.setState({ txt: textLog });
+            }
+        }
     }
 
     setStateHandler(setState) {

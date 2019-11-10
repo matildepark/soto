@@ -17,7 +17,6 @@ export class Root extends Component {
     let ship = window.ship;
     const buffer = new Share;
     console.log(buffer);
-    // this.state = store.state
   }
 
 
@@ -32,9 +31,9 @@ export class Root extends Component {
         <HeaderBar/>
         <Route exact path="/~soto" render={ () => {
           return (
-            <div className="pa3 flex flex-column-reverse bg-black mono gray3 w-100"
+            <div className="pa3 bg-black mono gray3 w-100"
             style={{lineHeight: "1.4", height: "calc(100% - 48px)", cursor: "text"}}>
-              <History/>
+              <History history={this.state.txt}/>
               <Input ship={ship} prompt={this.state.prompt}/>
             </div>
           )}}

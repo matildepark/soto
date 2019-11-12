@@ -7,7 +7,6 @@ import { History } from './history'
 import { Input } from './input'
 import { api } from '../api'
 import { store } from '../store'
-import { Share } from './lib/sole'
 
 export class Root extends Component {
   constructor(props) {
@@ -15,8 +14,6 @@ export class Root extends Component {
     this.state = store.state;
     store.setStateHandler(this.setState.bind(this));
     let ship = window.ship;
-    const buffer = new Share;
-    console.log(buffer);
   }
 
 

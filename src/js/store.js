@@ -1,9 +1,14 @@
+import { Share } from './components/lib/sole'
+export const buffer = new Share;
+
+
 export class Store {
     constructor() {
         this.state = {
             txt: [],
             prompt: ''
         }
+        console.log(buffer);
     }
 
     handleEvent(data) {

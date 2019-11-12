@@ -7,12 +7,15 @@ export class History extends Component {
     
     render() {
         return (
-            <div className="history flex flex-column-reverse"
+            <div className="history flex flex-column overflow-container"
             style={{ height: 'calc(100% - 1rem)', resize: 'vertical' }}
             >
-            {this.props.history.map((text, index) => {
-                return <p key={index}>{text}</p>
-            })}
+            <div style={{ marginTop: 'auto'}}
+            >
+                {this.props.history.map((text, index) => {
+                    return <p key={index}>{text}</p>
+                })}
+                </div>
             </div>
         )
     }

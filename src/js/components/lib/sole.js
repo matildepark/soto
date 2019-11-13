@@ -40,14 +40,14 @@ export class Share {
         case 'set': return 'nop';
         case 'del':
           if (sin.del === dex.del) { return 'nop'; }
-          dex = _.extend(true, {}, dex);  // clone
+          dex = _.cloneDeep(dex);  // clone
           switch (Object.keys(dex)[0]) {
             case 'del': if (sin.del < dex.del) {    dex.del--; } break;
             case 'ins': if (sin.del < dex.ins.at) { dex.ins.at--; } break;
           }
           return dex;
         case 'ins':
-          dex = _.extend(true, {}, dex);  // clone
+          dex = _.cloneDeep(dex);  // clone
           var {at,cha} = sin.ins;
           switch (Object.keys(dex)[0]) {
             case 'del': if (at < dex.del) { dex.del++; } break;

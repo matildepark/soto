@@ -7,27 +7,45 @@ export class Input extends Component {
         super(props);
         this.keyPress = this.keyPress.bind(this);
     }
-    // needs to overrule copy/pastes
+
     keyPress = (e) => {
-        if (e.keyCode === 13) {
-          console.log(e.key)
+      let ignoredKeys = ["Meta", "Alt", "Control", "Escape", "Shift",
+                        "F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8",
+                        "F9", "F10", "F11", "F12"
+                        ]
+      // submit on enter
+        if (e.keyCode === 13 || e.key === "Enter") {
           api.soto("ret")
         }
-        else if ((e.key === "Backspace") && (this.props.cursor > 0)) {
-          return store.doEdit({del: this.props.cursor - 1})
-        }
+        // remove and resubmit console input if anything is inputted
+          // XX backspace behaviour is fucking weird, look into this
         else if (e.key === "Backspace") {
-          e.preventDefault();
+          if (this.props.cursor > 0) {
+            return store.doEdit({ del: this.props.cursor - 1 });
+          } else {
+            e.preventDefault();
+          }
         }
+        else if (e.key.startsWith("Arrow")) {
+          if (e.key === "ArrowLeft") {
+            (this.props.cursor > 0) ? 
+            store.setState({cursor: this.props.cursor - 1}) : 
+            e.preventDefault();
+          }
+          else if (e.key === "ArrowRight") {
+            (this.props.cursor <= this.props.input.length) ?
+            store.setState({ cursor: this.props.cursor + 1}) :
+            e.preventDefault();
+          }
+          else e.preventDefault(); // XX up/down should browse command history
+        }
+        // tab completion
         else if (e.key === "Tab") {
           e.preventDefault();
-          api.soto("tab");
+          api.soto({tab: this.props.cursor});
         }
-        else if (!(e.key === "Meta" 
-                || e.key === "Alt" 
-                || e.key === "Control" 
-                || e.key === "Escape" 
-                || e.key === "Shift")) {
+        // capture and transmit most characters
+        else if (ignoredKeys.indexOf(e.key) === -1) {
           let thisact = buffer.transmit({ins:{at: this.props.cursor, cha: e.key}});
           api.soto({det: thisact});
           }
@@ -36,7 +54,6 @@ export class Input extends Component {
       handleChange = (e) => {
         store.setState({ input: event.target.value });
         store.setState({ cursor: event.target.selectionEnd });
-        console.log(this.props.cursor);
       }
 
     render() {

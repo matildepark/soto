@@ -1,7 +1,7 @@
-// See /hook/core/sole/lib
-const str = JSON.stringify;
+// See /lib/sole/hoon
+import _ from 'lodash';
 
-// initiates, holds and modifies buffer for communication
+const str = JSON.stringify;
 
 export class Share {
   constructor(buf, ven, leg) {
@@ -40,14 +40,14 @@ export class Share {
         case 'set': return 'nop';
         case 'del':
           if (sin.del === dex.del) { return 'nop'; }
-          dex = $.extend(true, {}, dex);  // clone
+          dex = _.extend(true, {}, dex);  // clone
           switch (Object.keys(dex)[0]) {
             case 'del': if (sin.del < dex.del) {    dex.del--; } break;
             case 'ins': if (sin.del < dex.ins.at) { dex.ins.at--; } break;
           }
           return dex;
         case 'ins':
-          dex = $.extend(true, {}, dex);  // clone
+          dex = _.extend(true, {}, dex);  // clone
           var {at,cha} = sin.ins;
           switch (Object.keys(dex)[0]) {
             case 'del': if (at < dex.del) { dex.del++; } break;
@@ -88,13 +88,14 @@ export class Share {
     }
     this.leg = this.leg.slice((this.leg.length + ler[0]) - this.ven[0]); 
     const dat = this.transmute(this.leg, ted);
-    this.ven[1]++; this.apply(dat); return dat;
+    this.ven[1]++; this.apply(dat); console.log(dat); return dat;
   }
   //
   remit() { throw 'stub'; }
   transmit(ted){
     const act = {ted, ler:[this.ven[1], this.ven[0]]};
     this.commit(ted);
+    console.log(act)
     return act;
   }
   //

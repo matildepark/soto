@@ -12,8 +12,10 @@ export class Input extends Component {
           console.log(e.key)
           api.soto("ret")
         }
+        else if ((e.key === "Backspace") && (this.props.cursor > 0)) {
+          return store.doEdit({del: this.props.cursor - 1})
+        }
         else if (e.key === "Backspace") {
-          // i'll come to you
           e.preventDefault();
         }
         else if (!(e.key === "Meta" 
@@ -21,14 +23,15 @@ export class Input extends Component {
                 || e.key === "Control" 
                 || e.key === "Escape" 
                 || e.key === "Shift")) {
-          let thisact = buffer.transmit({ins:{at: store.state.cursor, cha: e.key}});
+          let thisact = buffer.transmit({ins:{at: this.props.cursor, cha: e.key}});
           api.soto({det: thisact});
           }
       }
 
       handleChange = (e) => {
         store.setState({ input: event.target.value });
-        store.setState({ cursor: event.target.selectionStart });
+        store.setState({ cursor: event.target.selectionEnd });
+        console.log(this.props.cursor);
       }
 
     render() {

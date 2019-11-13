@@ -1,4 +1,5 @@
 import { Share } from './components/lib/sole'
+import { api } from './api';
 export const buffer = new Share;
 
 
@@ -25,7 +26,6 @@ export class Store {
         if (dojoReply.map) { 
             return dojoReply.map(reply => this.handleEvent(reply));
         }
-        // throw 'set' to apply(ted) in buffer
         switch(Object.keys(dojoReply)[0]) {
             case 'txt':
                 return this.print(dojoReply.txt);
@@ -48,6 +48,12 @@ export class Store {
                 } break;
             default: console.log(dojoReply);
         }
+    }
+
+    doEdit(ted) {
+        let detSend = buffer.transmit(ted);
+        this.sync(ted);
+        return api.soto({det: detSend});
     }
 
     print(txt) {

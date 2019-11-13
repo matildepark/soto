@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import { store, buffer } from '../store'
+import { api } from '../api';
 
 export class Input extends Component {
     constructor(props) {
         super(props);
         this.keyPress = this.keyPress.bind(this);
     }
-
+    // needs to overrule copy/pastes
     keyPress = (e) => {
         if (e.keyCode === 13) {
           console.log(e.key)
@@ -17,6 +18,10 @@ export class Input extends Component {
         }
         else if (e.key === "Backspace") {
           e.preventDefault();
+        }
+        else if (e.key === "Tab") {
+          e.preventDefault();
+          api.soto("tab");
         }
         else if (!(e.key === "Meta" 
                 || e.key === "Alt" 
@@ -48,6 +53,7 @@ export class Input extends Component {
               className="mono ml1 flex-auto dib w-100"
               onChange={this.handleChange}
               onKeyDown={this.keyPress}
+              onPaste={e => {e.preventDefault()}}
               value={this.props.input}/>
             </div>
         )

@@ -7,7 +7,7 @@ export class Input extends Component {
         this.keyPress = this.keyPress.bind(this);
     }
 
-    keyPress(e) {
+    keyPress = (e) => {
         if (e.keyCode === 13) {
           console.log(e.key)
           api.soto("ret")
@@ -16,10 +16,19 @@ export class Input extends Component {
           // i'll come to you
           e.preventDefault();
         }
-        else if (!(e.key === "Meta" || e.key === "Alt" || e.key === "Control" || e.key === "Escape" || e.key === "Shift")) {
+        else if (!(e.key === "Meta" 
+                || e.key === "Alt" 
+                || e.key === "Control" 
+                || e.key === "Escape" 
+                || e.key === "Shift")) {
           let thisact = buffer.transmit({ins:{at: store.state.cursor, cha: e.key}});
           api.soto({det: thisact});
           }
+      }
+
+      handleChange = (e) => {
+        store.setState({ input: event.target.value });
+        store.setState({ cursor: event.target.selectionStart });
       }
 
     render() {
@@ -34,12 +43,9 @@ export class Input extends Component {
               autoCorrect="false" 
               autoFocus={true}
               className="mono ml1 flex-auto dib w-100"
-              onChange={event => {
-                store.setState({cursor: event.target.selectionStart})
-                buffer.buf = event.target.value
-              }}
-              onKeyDown={this.keyPress}>
-              </input>                
+              onChange={this.handleChange}
+              onKeyDown={this.keyPress}
+              value={this.props.input}/>
             </div>
         )
     }

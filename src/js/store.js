@@ -7,33 +7,57 @@ export class Store {
         this.state = {
             txt: [],
             prompt: '',
-            cursor: 0
+            cursor: 0,
+            input: ""
         }
+        this.sync = this.sync.bind(this);
+        this.print = this.print.bind(this);
     }
 
     handleEvent(data) {
-        // this needs a map but also why does dojo say nothing when sending it a sole-action
-        let dojoReply = data.data;
-        console.log(dojoReply);
-        // pro is our prompt, either '>' or '<' depending on the statement
-        if (dojoReply.pro) this.setState({ prompt: dojoReply.pro.cad});
-        if (dojoReply.tan) {
-            let textLog = this.state.txt;
-            textLog.push(dojoReply.tan);
-            this.setState({ txt: textLog });
+        // recursive handler
+        if (data.data) {
+            var dojoReply = data.data;
+        } else {
+            var dojoReply = data;
         }
-        // responses come in "reply + change to buffer" arrays
-        if (dojoReply.constructor === Array) {
-            // txt prints to console history
-            if (dojoReply[0].txt) {
-                let textLog = this.state.txt;
-                textLog.push(dojoReply[0].txt);
-                this.setState({ txt: textLog });
-            }
-            else if (dojoReply[0].det) {
-                buffer.receive(dojoReply[0].det);
-            }
+        // %mor sole-effects are nested, so throw back to handler
+        if (dojoReply.map) { 
+            return dojoReply.map(reply => this.handleEvent(reply));
         }
+        // throw 'set' to apply(ted) in buffer
+        switch(Object.keys(dojoReply)[0]) {
+            case 'txt':
+                return this.print(dojoReply.txt);
+            case 'tan':
+                return dojoReply.tan.split("\n").map(this.print);
+            case 'pro':
+                return this.setState({ prompt: dojoReply.pro.cad });
+            case 'hop':
+                return this.setState({ cursor: dojoReply.hop });
+            case 'det':
+                buffer.receive(dojoReply.det);
+                return this.sync(dojoReply.det.ted);
+            case 'act':
+                switch(dojoReply.act) {
+                    case 'clr': return this.setState({txt: []});
+                    case 'nex': return this.setState({
+                        input: "",
+                        cursor: 0
+                    });
+                } break;
+            default: console.log(dojoReply);
+        }
+    }
+
+    print(txt) {
+        let textLog = this.state.txt;
+        textLog.push(txt);
+        return this.setState({ txt: textLog });
+    }
+    
+    sync(ted) {
+        return this.setState({ input: buffer.buf, cursor: buffer.transpose(ted, this.state.cursor)});
     }
 
     setStateHandler(setState) {

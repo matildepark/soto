@@ -31,7 +31,7 @@ export class Root extends Component {
             <div className="pa3 bg-black mono gray3 w-100"
             style={{lineHeight: "1.4", height: "calc(100% - 48px)", cursor: "text"}}>
               <History history={this.state.txt}/>
-              <Input ship={ship} prompt={this.state.prompt}/>
+              <Input ship={ship} prompt={this.state.prompt} input={this.state.input}/>
             </div>
           )}}
         />

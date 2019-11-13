@@ -13,7 +13,7 @@ export class History extends Component {
             <div style={{ marginTop: 'auto'}}
             >
                 {this.props.history.map((text, index) => {
-                    return <p key={index}>{text}</p>
+                    return <p className="mono" key={index}>{text}</p>
                 })}
                 </div>
             </div>

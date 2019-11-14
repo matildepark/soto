@@ -7,9 +7,13 @@ export default class sotoTile extends Component {
 
   render() {
     return (
-      <div className="w-100 h-100 relative bg-black ba b--gray" style={{ }}>
-        <a className="pa2 no-underline b label-regular absolute" href="/~soto"
-        style={{ left: 8, top: 4, color: "#777", padding: 0 }}>Dojo</a>
+      <div className="w-100 h-100 relative" style={{background: "#1a1a1a"}}>
+        <a className="w-100 h-100 db no-underline" href="/~soto">
+          <p className="gray label-regular b absolute"
+           style={{ left: 8, top: 4 }}>
+             Dojo
+          </p>
+        </a>
       </div>
     );
   }

@@ -1,3 +1,5 @@
+::  Soto: A Dojo relay for Urbit's Landscape interface
+::  Relays sole-effects to subscribers and forwards sole-action pokes
 /-  sole
 /+  *server, *sole
 /=  index
@@ -31,7 +33,7 @@
 =,  format
 |%
 +$  state
-  $%  [%0 bon=bone]
+  $%  [%0 bon=bone]                                     :: store bon from Dojo peer
   ==
 ::
 +$  move  [bone card]
@@ -63,7 +65,6 @@
 ++  prep
   |=  old=(unit state)
   ^-  (quip move _this)
-  ~&  '%prep'
   =/  launcha=poke
     [%launch-action [%soto /sototile '/~soto/js/tile.js']]
   ?~  old
@@ -92,14 +93,12 @@
 ++  poke-sole-action
   |=  act=sole-action
   ^-  (quip move _this)
-  ~&  act
   :_  this
   [bon.sta %poke / [our.bol %dojo] [%sole-action act]]~                        :: poke/peer need same wire
 ::
 ++  diff-sole-effect
   |=  [=wire fec=sole-effect]
   ^-  (quip move _this)
-  ~&  fec
   :_  this
   [bon.sta %diff %sole-effect fec]~
 ::

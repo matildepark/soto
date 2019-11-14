@@ -1,4 +1,4 @@
-import { Share } from './components/lib/sole'
+import { Share } from './components/lib/sole';
 import { api } from './api';
 export const buffer = new Share;
 

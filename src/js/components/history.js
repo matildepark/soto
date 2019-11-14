@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 export class History extends Component {
     constructor(props) {
-        super(props)
+        super(props);
     }
 
 render() {
@@ -19,4 +19,4 @@ render() {
     }
 }
 
-export default History
+export default History;

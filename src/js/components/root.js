@@ -1,12 +1,12 @@
-import React, { Component } from 'react'
-import { BrowserRouter, Route } from "react-router-dom"
-import classnames from 'classnames'
-import _ from 'lodash'
-import { HeaderBar } from './lib/header-bar'
-import { History } from './history'
-import { Input } from './input'
-import { api } from '../api'
-import { store } from '../store'
+import React, { Component } from 'react';
+import { BrowserRouter, Route } from "react-router-dom";
+import classnames from 'classnames';
+import _ from 'lodash';
+import { HeaderBar } from './lib/header-bar';
+import { History } from './history';
+import { Input } from './input';
+import { api } from '../api';
+import { store } from '../store';
 
 export class Root extends Component {
   constructor(props) {
@@ -35,4 +35,3 @@ export class Root extends Component {
     )
   }
 }
-

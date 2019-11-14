@@ -57,7 +57,8 @@ render() {
   return (
     <div className="flex flex-row" 
     style={{ flexGrow: 1 }}>
-    ~{this.props.ship}:dojo
+    <div className="flex-shrink-0">~{this.props.ship}:dojo
+    </div>
     <span id="prompt">
     {this.props.prompt}
     </span>

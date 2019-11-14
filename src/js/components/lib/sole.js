@@ -88,14 +88,13 @@ export class Share {
     }
     this.leg = this.leg.slice((this.leg.length + ler[0]) - this.ven[0]); 
     const dat = this.transmute(this.leg, ted);
-    this.ven[1]++; this.apply(dat); console.log(dat); return dat;
+    this.ven[1]++; this.apply(dat); return dat;
   }
   //
   remit() { throw 'stub'; }
   transmit(ted){
     const act = {ted, ler:[this.ven[1], this.ven[0]]};
     this.commit(ted);
-    console.log(act)
     return act;
   }
   //

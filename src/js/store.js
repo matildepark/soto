@@ -29,6 +29,13 @@ export class Store {
         switch(Object.keys(dojoReply)[0]) {
             case 'txt':
                 return this.print(dojoReply.txt);
+            case 'tab':
+                for (let suggestion of dojoReply.tab) {
+                    let match = suggestion.match;
+                    let info = suggestion.info;
+                    this.print(match + " " + info);
+                }
+                return;
             case 'tan':
                 return dojoReply.tan.split("\n").map(this.print);
             case 'pro':

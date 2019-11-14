@@ -1,5 +1,4 @@
 // See /lib/sole/hoon
-import _ from 'lodash';
 
 const str = JSON.stringify;
 

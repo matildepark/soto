@@ -70,7 +70,9 @@ export class Store {
     }
     
     sync(ted) {
-        return this.setState({ input: buffer.buf, cursor: buffer.transpose(ted, this.state.cursor)});
+        return this.setState({ input: buffer.buf, 
+                               cursor: buffer.transpose(ted, this.state.cursor)
+                            });
     }
 
     setStateHandler(setState) {

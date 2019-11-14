@@ -7,7 +7,7 @@ export class History extends Component {
     
     render() {
         return (
-            <div className="history flex flex-column overflow-container"
+            <div className="history flex flex-column-reverse overflow-container"
             style={{ height: 'calc(100% - 1rem)', resize: 'vertical' }}
             >
             <div style={{ marginTop: 'auto'}}

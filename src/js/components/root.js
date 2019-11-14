@@ -16,11 +16,6 @@ export class Root extends Component {
     let ship = window.ship;
   }
 
-
-  componentDidMount() {
-//
-  }
-
   render() {
     return (
       <BrowserRouter>

@@ -13,6 +13,10 @@ export default class sotoTile extends Component {
            style={{ left: 8, top: 4 }}>
              Dojo
           </p>
+          <img src="~soto/img/Tile.png"
+            className="absolute"
+            style={{ left: 30, top: 30, height: "174px", width: "174px"}}
+          />
         </a>
       </div>
     );

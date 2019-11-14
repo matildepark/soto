@@ -30,10 +30,14 @@
   /|  /css/
       /~  ~
   ==
+/=  soto-png
+  /^  (map knot @)
+  /:  /===/app/soto/img  /_  /png/
+::
 =,  format
 |%
 +$  state
-  $%  [%0 bon=bone]                                     :: store bon from Dojo peer
+  $%  [%0 bon=bone]                                     :: store bone from Dojo peer
   ==
 ::
 +$  move  [bone card]
@@ -81,6 +85,8 @@
   ^-  (quip move _this)
   :_  this
   [ost.bol %diff %json *json]~
+::
+:: Peering Dojo when peered by front-end, initiating the session
 ::
 ++  peer-primary
   |=  wir=wire
@@ -135,6 +141,13 @@
       [%'~soto' %js %index ~]
     :_  this
     [ost.bol %http-response (js-response:app script)]~
+  ::
+  ::  images
+  ::
+      [%'~soto' %img *]
+    =/  img  (as-octs:mimes:html (~(got by soto-png) `@ta`name))
+    :_  this
+    [ost.bol %http-response (png-response:app img)]~
   ::
   ::  index page
   ::
